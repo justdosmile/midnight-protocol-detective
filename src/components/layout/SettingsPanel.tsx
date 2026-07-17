@@ -41,7 +41,7 @@ export const SettingsPanel = ({ onClose, onRequestReset }: SettingsPanelProps) =
           <div className="setting-row">
             <div>
               <strong>Музыка дома</strong>
-              <p>Тихая тревожная музыка, дождь и короткие сигналы.</p>
+              <p>Тихая тревожная музыка и короткие сигналы.</p>
             </div>
             <button
               className={`toggle ${settings.audio.enabled && isActive ? 'toggle--on' : ''}`}

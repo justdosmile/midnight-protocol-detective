@@ -44,7 +44,7 @@ export const StartScreen = ({ onStart, onNewGame }: StartScreenProps) => {
             aria-pressed={isActive}
           >
             <span aria-hidden="true">{isActive ? '◉' : '○'}</span>
-            {isActive ? 'Музыка и дождь включены' : 'Включить музыку и дождь'}
+            {isActive ? 'Музыка включена' : 'Включить музыку'}
           </button>
         </div>
         <dl className="start-screen__facts">

@@ -22,10 +22,9 @@ interface AmbienceContextValue {
 class AmbienceEngine {
   private context: AudioContext | null = null;
   private master: GainNode | null = null;
-  private ambienceBus: GainNode | null = null;
   private uiBus: GainNode | null = null;
-  private sources: AudioScheduledSourceNode[] = [];
-  private toneTimer: number | null = null;
+  private soundtrack: HTMLAudioElement | null = null;
+  private soundtrackSource: MediaElementAudioSourceNode | null = null;
   private suspendTimer: number | null = null;
 
   async start(volume: number): Promise<void> {
@@ -37,7 +36,7 @@ class AmbienceEngine {
     this.suspendTimer = null;
     await context.resume();
     this.setVolume(volume);
-    this.scheduleNightTone();
+    await this.soundtrack?.play();
   }
 
   setVolume(volume: number): void {
@@ -56,10 +55,9 @@ class AmbienceEngine {
     this.master.gain.cancelScheduledValues(now);
     this.master.gain.setValueAtTime(this.master.gain.value, now);
     this.master.gain.linearRampToValueAtTime(0, now + 0.3);
-    if (this.toneTimer !== null) window.clearTimeout(this.toneTimer);
     if (this.suspendTimer !== null) window.clearTimeout(this.suspendTimer);
-    this.toneTimer = null;
     this.suspendTimer = window.setTimeout(() => {
+      this.soundtrack?.pause();
       if (context.state === 'running') void context.suspend();
       this.suspendTimer = null;
     }, 380);
@@ -87,24 +85,19 @@ class AmbienceEngine {
   }
 
   async destroy(): Promise<void> {
-    if (this.toneTimer !== null) window.clearTimeout(this.toneTimer);
     if (this.suspendTimer !== null) window.clearTimeout(this.suspendTimer);
-    this.toneTimer = null;
     this.suspendTimer = null;
-    for (const source of this.sources) {
-      try {
-        source.stop();
-      } catch {
-        // Источник уже мог закончить работу сам.
-      }
-      source.disconnect();
+    if (this.soundtrack) {
+      this.soundtrack.pause();
+      this.soundtrack.currentTime = 0;
     }
-    this.sources = [];
+    this.soundtrackSource?.disconnect();
     const context = this.context;
     this.context = null;
     this.master = null;
-    this.ambienceBus = null;
     this.uiBus = null;
+    this.soundtrack = null;
+    this.soundtrackSource = null;
     if (context && context.state !== 'closed') await context.close();
   }
 
@@ -113,116 +106,23 @@ class AmbienceEngine {
     const master = context.createGain();
     const ambienceBus = context.createGain();
     const uiBus = context.createGain();
+    const soundtrack = new Audio(`${import.meta.env.BASE_URL}assets/house-ambience.mp3`);
+    const soundtrackSource = context.createMediaElementSource(soundtrack);
     master.gain.value = 0;
-    ambienceBus.gain.value = 0.72;
+    ambienceBus.gain.value = 0.5;
     uiBus.gain.value = 0.82;
+    soundtrack.loop = true;
+    soundtrack.preload = 'auto';
+    soundtrackSource.connect(ambienceBus);
     ambienceBus.connect(master);
     uiBus.connect(master);
     master.connect(context.destination);
 
     this.context = context;
     this.master = master;
-    this.ambienceBus = ambienceBus;
     this.uiBus = uiBus;
-
-    this.createRain(context, ambienceBus);
-    this.createLowPad(context, ambienceBus);
-  }
-
-  private createRain(context: AudioContext, destination: AudioNode): void {
-    const buffer = context.createBuffer(1, context.sampleRate * 4, context.sampleRate);
-    const channel = buffer.getChannelData(0);
-    let previous = 0;
-    for (let index = 0; index < channel.length; index += 1) {
-      const white = Math.random() * 2 - 1;
-      previous = previous * 0.92 + white * 0.08;
-      channel[index] = previous;
-    }
-
-    const rain = context.createBufferSource();
-    const highpass = context.createBiquadFilter();
-    const lowpass = context.createBiquadFilter();
-    const gain = context.createGain();
-    rain.buffer = buffer;
-    rain.loop = true;
-    highpass.type = 'highpass';
-    highpass.frequency.value = 170;
-    lowpass.type = 'lowpass';
-    lowpass.frequency.value = 1550;
-    gain.gain.value = 0.14;
-    rain.connect(highpass).connect(lowpass).connect(gain).connect(destination);
-    rain.start();
-    this.sources.push(rain);
-  }
-
-  private createLowPad(context: AudioContext, destination: AudioNode): void {
-    const pad = context.createGain();
-    const filter = context.createBiquadFilter();
-    pad.gain.value = 0.055;
-    filter.type = 'lowpass';
-    filter.frequency.value = 430;
-    filter.Q.value = 0.7;
-    pad.connect(filter).connect(destination);
-
-    const notes = [55, 82.41, 110];
-    notes.forEach((frequency, index) => {
-      const oscillator = context.createOscillator();
-      const gain = context.createGain();
-      oscillator.type = index === 1 ? 'triangle' : 'sine';
-      oscillator.frequency.value = frequency;
-      oscillator.detune.value = index === 0 ? -5 : index === 2 ? 4 : 0;
-      gain.gain.value = index === 1 ? 0.56 : 0.38;
-      oscillator.connect(gain).connect(pad);
-      oscillator.start();
-      this.sources.push(oscillator);
-    });
-
-    const pulse = context.createOscillator();
-    const pulseDepth = context.createGain();
-    pulse.type = 'sine';
-    pulse.frequency.value = 0.055;
-    pulseDepth.gain.value = 0.012;
-    pulse.connect(pulseDepth).connect(pad.gain);
-    pulse.start();
-    this.sources.push(pulse);
-
-    const rumble = context.createOscillator();
-    const rumbleGain = context.createGain();
-    rumble.type = 'sine';
-    rumble.frequency.value = 38;
-    rumbleGain.gain.value = 0.018;
-    rumble.connect(rumbleGain).connect(destination);
-    rumble.start();
-    this.sources.push(rumble);
-  }
-
-  private playNightTone(): void {
-    if (!this.context || !this.ambienceBus || this.context.state !== 'running') return;
-    const now = this.context.currentTime;
-    const notes = [146.83, 174.61, 196, 220];
-    const frequency = notes[Math.floor(Math.random() * notes.length)] ?? 174.61;
-    const oscillator = this.context.createOscillator();
-    const gain = this.context.createGain();
-    const filter = this.context.createBiquadFilter();
-    oscillator.type = 'triangle';
-    oscillator.frequency.setValueAtTime(frequency, now);
-    oscillator.frequency.linearRampToValueAtTime(frequency * 0.995, now + 5.4);
-    filter.type = 'lowpass';
-    filter.frequency.value = 720;
-    gain.gain.setValueAtTime(0.0001, now);
-    gain.gain.exponentialRampToValueAtTime(0.028, now + 1.35);
-    gain.gain.exponentialRampToValueAtTime(0.0001, now + 5.4);
-    oscillator.connect(filter).connect(gain).connect(this.ambienceBus);
-    oscillator.start(now);
-    oscillator.stop(now + 5.5);
-  }
-
-  private scheduleNightTone(): void {
-    if (this.toneTimer !== null) window.clearTimeout(this.toneTimer);
-    this.toneTimer = window.setTimeout(() => {
-      this.playNightTone();
-      this.scheduleNightTone();
-    }, 7_000 + Math.random() * 9_000);
+    this.soundtrack = soundtrack;
+    this.soundtrackSource = soundtrackSource;
   }
 }
 
