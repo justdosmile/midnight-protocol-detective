@@ -51,13 +51,13 @@ export const SequencePuzzle = ({ puzzle, interaction, onSolved }: SequencePuzzle
     if (isExactSequence(order, interaction.correctOrder)) {
       onSolved(order);
     } else {
-      setMessage('Порядок пока противоречит хотя бы одной детали. Сверьте независимые признаки.');
+      setMessage('Порядок не сходится. Сверьте время и показания с кухни.');
     }
   };
 
   return (
     <div className="sequence-puzzle">
-      <ol className="sequence-list" aria-label="Порядок кадров">
+      <ol className="sequence-list" aria-label="Порядок событий">
         {order.map((id, index) => {
           const item = itemById.get(id);
           if (!item) return null;

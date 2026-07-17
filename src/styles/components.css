@@ -21,11 +21,11 @@
   overflow: hidden;
   border: 1px solid var(--line-strong);
   background:
-    linear-gradient(135deg, rgb(79 166 183 / 6%), transparent 35%),
-    rgb(7 21 28 / 97%);
+    linear-gradient(135deg, rgb(173 81 56 / 9%), transparent 38%),
+    rgb(17 13 12 / 98%);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
-  grid-template-rows: auto minmax(0, auto) auto;
+  grid-template-rows: auto minmax(0, 1fr) auto;
   animation: modal-in 200ms ease-out both;
 }
 
@@ -58,6 +58,11 @@
   min-height: 0;
   padding: 22px;
   overflow-y: auto;
+  overflow-wrap: anywhere;
+  overscroll-behavior: contain;
+  scrollbar-color: var(--ink-600) transparent;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
 }
 
 .modal__footer {
@@ -84,7 +89,7 @@
   background: rgb(15 42 52 / 42%);
   border-radius: 100px;
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: 0.72rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
@@ -112,7 +117,7 @@
   width: 50px;
   color: var(--mist-500);
   font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-size: 0.78rem;
   text-align: center;
 }
 
@@ -122,6 +127,8 @@
   max-height: 58vh;
   padding: 18px;
   overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
   place-items: center;
   border: 1px solid var(--line);
   background:
@@ -157,6 +164,8 @@
 
 .document-viewer__sections p {
   margin: 0;
+  font-size: 1rem;
+  line-height: 1.62;
   white-space: pre-line;
 }
 
@@ -178,7 +187,7 @@
 .suspect-profile__role {
   color: var(--amber-400);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -231,7 +240,7 @@
 
 .setting-row p {
   color: var(--mist-500);
-  font-size: 0.76rem;
+  font-size: 0.84rem;
 }
 
 .setting-row--check {
@@ -249,7 +258,7 @@
   background: var(--ink-950);
   border-radius: 100px;
   gap: 7px;
-  font-size: 0.68rem;
+  font-size: 0.78rem;
 }
 
 .toggle span {
@@ -281,7 +290,7 @@
 .quick-guide {
   padding: 18px;
   margin-bottom: 28px;
-  border: 1px solid rgb(79 166 183 / 20%);
+  border: 1px solid rgb(120 155 145 / 22%);
   background: linear-gradient(135deg, var(--cyan-glow), rgb(7 25 32 / 52%));
   border-radius: var(--radius-md);
 }
@@ -317,13 +326,13 @@
   background: var(--amber-glow);
   border-radius: 50%;
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.75rem;
 }
 
 .quick-guide p {
   margin: 0;
   color: var(--mist-300);
-  font-size: 0.74rem;
+  font-size: 0.84rem;
 }
 
 .quick-guide__goal {
@@ -344,7 +353,7 @@
 .section-header > span {
   color: var(--mist-500);
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.75rem;
 }
 
 .material-grid {
@@ -355,10 +364,10 @@
 
 .material-card {
   display: grid;
-  min-height: 154px;
+  min-height: 176px;
   overflow: hidden;
   border: 1px solid var(--line);
-  background: linear-gradient(135deg, rgb(17 43 53 / 72%), rgb(8 23 30 / 76%));
+  background: linear-gradient(135deg, rgb(43 31 27 / 88%), rgb(18 14 13 / 88%));
   border-radius: var(--radius-md);
   grid-template-columns: 112px minmax(0, 1fr);
   box-shadow: var(--shadow-sm);
@@ -371,7 +380,7 @@
 }
 
 .material-card--viewed {
-  background: linear-gradient(135deg, rgb(17 48 58 / 82%), rgb(8 23 30 / 76%));
+  background: linear-gradient(135deg, rgb(53 36 30 / 92%), rgb(18 14 13 / 88%));
 }
 
 .material-card--locked {
@@ -413,22 +422,18 @@
 
 .material-card__meta span {
   padding: 2px 5px;
-  font-size: 0.48rem;
+  font-size: 0.72rem;
 }
 
 .material-card h3 {
   margin: 9px 0 5px;
-  font-size: 1rem;
+  font-size: 1.08rem;
 }
 
 .material-card p {
-  display: -webkit-box;
   margin-bottom: 10px;
-  overflow: hidden;
   color: var(--mist-500);
-  font-size: 0.7rem;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  font-size: 0.82rem;
 }
 
 .material-card .text-button {
@@ -469,7 +474,7 @@
 .solution-nudge p {
   margin: 0;
   color: var(--mist-300);
-  font-size: 0.7rem;
+  font-size: 0.82rem;
 }
 
 .solution-nudge {
@@ -484,5 +489,5 @@
 .solution-nudge strong {
   display: block;
   margin-bottom: 4px;
-  font-size: 0.75rem;
+  font-size: 0.84rem;
 }

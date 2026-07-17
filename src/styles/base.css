@@ -17,7 +17,8 @@ body {
   overflow-x: hidden;
   color: var(--mist-100);
   background:
-    radial-gradient(circle at 72% 12%, rgb(56 118 131 / 11%), transparent 31rem),
+    radial-gradient(circle at 78% 12%, rgb(106 42 30 / 14%), transparent 34rem),
+    radial-gradient(circle at 18% 82%, rgb(72 101 89 / 8%), transparent 29rem),
     linear-gradient(135deg, var(--ink-950), var(--ink-900));
 }
 
@@ -27,8 +28,11 @@ body::before {
   inset: 0;
   pointer-events: none;
   content: "";
-  opacity: 0.12;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.23'/%3E%3C/svg%3E");
+  opacity: 0.28;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 3px, rgb(255 239 220 / 1.2%) 3px 4px),
+    radial-gradient(circle at 30% 20%, rgb(255 255 255 / 2%), transparent 1px);
+  background-size: auto, 5px 5px;
 }
 
 button,
@@ -93,7 +97,8 @@ h4 {
 }
 
 p {
-  line-height: 1.55;
+  line-height: 1.62;
+  overflow-wrap: anywhere;
 }
 
 img {
@@ -134,7 +139,7 @@ img {
   margin-bottom: 0.45rem;
   color: var(--amber-400);
   font-family: var(--font-mono);
-  font-size: 0.69rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.13em;
   line-height: 1.4;
@@ -144,7 +149,7 @@ img {
 .muted,
 .input-help {
   color: var(--mist-500);
-  font-size: 0.82rem;
+  font-size: 0.88rem;
 }
 
 .button {
@@ -162,26 +167,26 @@ img {
 }
 
 .button--primary {
-  color: #171006;
+  color: #1b0d09;
   background: linear-gradient(135deg, var(--amber-400), var(--amber-500));
   box-shadow: 0 8px 24px rgb(212 138 44 / 18%);
 }
 
 .button--primary:not(:disabled):hover {
-  background: #ffc166;
+  background: #efb081;
 }
 
 .button--quiet,
 .button--sound {
   color: var(--mist-100);
   border-color: var(--line-strong);
-  background: rgb(19 44 55 / 56%);
+  background: rgb(47 32 28 / 62%);
 }
 
 .button--quiet:not(:disabled):hover,
 .button--sound:not(:disabled):hover {
   border-color: var(--cyan-500);
-  background: rgb(32 66 77 / 68%);
+  background: rgb(65 43 36 / 76%);
 }
 
 .button--active {
@@ -209,7 +214,7 @@ img {
   color: var(--amber-400);
   border: 0;
   background: transparent;
-  font-size: 0.79rem;
+  font-size: 0.86rem;
   font-weight: 700;
   text-align: left;
 }
@@ -227,7 +232,7 @@ img {
   place-items: center;
   color: var(--mist-300);
   border: 1px solid var(--line);
-  background: rgb(14 35 44 / 70%);
+  background: rgb(39 28 24 / 76%);
   border-radius: var(--radius-sm);
 }
 
@@ -245,7 +250,7 @@ img {
 .field > span,
 .range-setting > span {
   color: var(--mist-300);
-  font-size: 0.78rem;
+  font-size: 0.84rem;
   font-weight: 650;
 }
 
@@ -254,7 +259,7 @@ textarea,
 select {
   width: 100%;
   border: 1px solid var(--line-strong);
-  background: rgb(3 13 18 / 72%);
+  background: rgb(12 9 8 / 78%);
   border-radius: var(--radius-sm);
 }
 
@@ -315,8 +320,8 @@ input[type="checkbox"] {
   font-size: clamp(1.8rem, 4vw, 3rem);
 }
 
-.large-text {
-  font-size: 18px;
+html.large-text {
+  font-size: 20px;
 }
 
 .high-contrast {

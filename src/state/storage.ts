@@ -9,7 +9,7 @@ import type {
 } from '../types/game';
 import { CURRENT_SAVE_VERSION, createInitialGameState } from './defaultState';
 
-export const SAVE_STORAGE_KEY = 'midnight-protocol:save';
+export const SAVE_STORAGE_KEY = 'three-short-rings:save';
 
 export interface StorageLike {
   getItem(key: string): string | null;

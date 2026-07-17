@@ -60,33 +60,33 @@ export const SignalPuzzle = ({ puzzle, interaction, onSolved }: SignalPuzzleProp
     if (matchesSignalAnswer(answer, interaction.acceptedAnswers)) {
       onSolved(answer);
     } else {
-      setMessage('Расшифровка пока не совпадает с полной последовательностью групп.');
+      setMessage('Ответ не совпадает с памяткой. Сверьте ритм звонков ещё раз.');
     }
   };
 
   return (
     <div className="signal-puzzle">
-      <div className="waveform" aria-label={`Визуальная запись: ${interaction.transcript}`}>
+      <div className="waveform" aria-label={`Визуальная запись звонков: ${interaction.transcript}`}>
         {interaction.groups.map((group, groupIndex) => (
           <div className="waveform__group" key={`${puzzle.id}-group-${groupIndex}`}>
             {group.map((token, tokenIndex) => (
               <span
                 className={`waveform__pulse waveform__pulse--${token}`}
                 key={`${token}-${tokenIndex}`}
-                aria-label={token === 'short' ? 'короткий сигнал' : 'длинный сигнал'}
+                aria-label={token === 'short' ? 'короткий звонок' : 'длинный звонок'}
               />
             ))}
           </div>
         ))}
       </div>
       <p className="visual-transcript">
-        <strong>Визуальная расшифровка:</strong> {interaction.transcript}
+        <strong>Ритм звонков:</strong> {interaction.transcript}
       </p>
       <button className="button button--quiet" onClick={() => void playSignal()}>
-        <span aria-hidden="true">▶</span> Воспроизвести сигнал
+        <span aria-hidden="true">▶</span> Прослушать звонки
       </button>
       <label className="field">
-        <span>Команда из таблицы</span>
+        <span>Откуда звонили?</span>
         <input
           value={answer}
           onChange={(event) => {
@@ -99,7 +99,7 @@ export const SignalPuzzle = ({ puzzle, interaction, onSolved }: SignalPuzzleProp
       </label>
       {message ? <p className="puzzle-message puzzle-message--wrong" role="status">{message}</p> : null}
       <button className="button button--primary" onClick={verify}>
-        Проверить расшифровку
+        Проверить ответ
       </button>
     </div>
   );

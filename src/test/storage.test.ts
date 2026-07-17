@@ -62,12 +62,12 @@ describe('версионированное сохранение', () => {
     expect(migrated.settings.audio).toEqual({ enabled: true, volume: 0.5 });
   });
 
-  it('сбрасывает сохранение второй версии после усиления правил задач', () => {
+  it('сбрасывает сохранение прошлой истории после полной смены дела', () => {
     const storage = new MemoryStorage();
     storage.setItem(
       SAVE_STORAGE_KEY,
       JSON.stringify({
-        saveVersion: 2,
+        saveVersion: 3,
         hasStarted: true,
         hasFinished: true,
         puzzleProgress: {

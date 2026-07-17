@@ -38,7 +38,7 @@ export const FinalAccusation = ({ onRestart }: FinalAccusationProps) => {
         setSolution(revealed);
       } else {
         setMessage(
-          'Версия пока не объясняет все факты. Проверьте временную линию, доступ к аппаратной и происхождение последней записи.',
+          'Версия пока не сходится. Проверьте время, звонки, маршрут, следы и мотив.',
         );
       }
     } catch {
@@ -56,7 +56,7 @@ export const FinalAccusation = ({ onRestart }: FinalAccusationProps) => {
         <div>
           <p className="eyebrow">Итоговая версия</p>
           <h2 id="accusation-title">Кто совершил преступление?</h2>
-          <p>Защищённое досье откроется только версии, которая совпадает с полной цепочкой фактов.</p>
+          <p>Назовите человека, который объясняет все пять цепочек на доске.</p>
         </div>
         <form onSubmit={(event) => void submit(event)}>
           <label className="field">
@@ -68,7 +68,7 @@ export const FinalAccusation = ({ onRestart }: FinalAccusationProps) => {
             <textarea value={motive} onChange={(event) => setMotive(event.target.value)} />
           </label>
           <label className="field">
-            <span>Как было создано ложное алиби <small>необязательно</small></span>
+            <span>Как это произошло <small>необязательно</small></span>
             <textarea value={method} onChange={(event) => setMethod(event.target.value)} />
           </label>
           {message ? <p className="puzzle-message puzzle-message--wrong" role="status">{message}</p> : null}
@@ -91,8 +91,8 @@ export const FinalAccusation = ({ onRestart }: FinalAccusationProps) => {
             <p className="revelation__name">{solution.culpritDisplayName}</p>
             <img
               className="revelation__art"
-              src={`${import.meta.env.BASE_URL}assets/reveal-illustration.svg`}
-              alt="Финальная иллюстрация разоблачения в аппаратной станции"
+              src={`${import.meta.env.BASE_URL}assets/final-evidence-table.webp`}
+              alt="Стол следователя с фотографиями дома, следом обуви, запиской и пуговицей"
             />
             {solution.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
             <section>

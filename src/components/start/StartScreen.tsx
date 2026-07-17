@@ -15,19 +15,22 @@ export const StartScreen = ({ onStart, onNewGame }: StartScreenProps) => {
     <main className="start-screen" id="main-content">
       <img
         className="start-screen__art"
-        src={`${import.meta.env.BASE_URL}assets/cover-art.webp`}
-        alt="Ночная береговая радиостанция Север-7 в холодном свете"
+        src={`${import.meta.env.BASE_URL}assets/house-cover.webp`}
+        alt="Старый загородный дом Вереск ночью под сильным дождём"
       />
       <div className="start-screen__shade" />
       <section className="start-screen__content">
         <div className="start-screen__brand">
-          <p className="eyebrow">Кооперативное расследование / 3–6 игроков</p>
+          <p className="eyebrow">Детективное расследование / 1–6 следователей</p>
           <h1>{content.title}</h1>
-          <p className="start-screen__case">Дело о последнем эфире</p>
+          <p className="start-screen__case">Убийство в доме «Вереск»</p>
           <p className="start-screen__subtitle">{content.subtitle}</p>
         </div>
         <div className="start-screen__actions">
-          <button className="button button--primary button--hero" onClick={onStart}>
+          <button
+            className="button button--primary button--hero"
+            onClick={() => void activate().catch(() => undefined).finally(onStart)}
+          >
             {hasSave ? 'Продолжить расследование' : 'Начать расследование'}
           </button>
           {hasSave ? (
@@ -41,13 +44,13 @@ export const StartScreen = ({ onStart, onNewGame }: StartScreenProps) => {
             aria-pressed={isActive}
           >
             <span aria-hidden="true">{isActive ? '◉' : '○'}</span>
-            {isActive ? 'Атмосфера включена' : 'Включить атмосферу'}
+            {isActive ? 'Музыка и дождь включены' : 'Включить музыку и дождь'}
           </button>
         </div>
         <dl className="start-screen__facts">
           <div>
             <dt>Продолжительность</dt>
-            <dd>40–60 минут</dd>
+            <dd>35–50 минут</dd>
           </div>
           <div>
             <dt>Формат</dt>
@@ -59,8 +62,7 @@ export const StartScreen = ({ onStart, onNewGame }: StartScreenProps) => {
           </div>
         </dl>
         <p className="content-note">
-          Вымышленная история содержит ненатуралистичное описание преступления. Важные звуковые
-          сигналы всегда продублированы визуально.
+          Все герои и события вымышлены. Жестоких сцен нет. Важные звуки всегда показаны и текстом.
         </p>
       </section>
     </main>

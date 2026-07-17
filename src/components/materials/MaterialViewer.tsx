@@ -4,6 +4,18 @@ import { useGame } from '../../state/GameContext';
 import type { Material } from '../../types/game';
 import { Modal } from '../modals/Modal';
 
+const kindLabels: Record<Material['kind'], string> = {
+  briefing: 'сводка',
+  profile: 'досье',
+  document: 'документ',
+  image: 'фотография',
+  camera: 'наблюдение',
+  audio: 'запись',
+  map: 'схема',
+  log: 'список событий',
+  message: 'показания',
+};
+
 interface MaterialViewerProps {
   material: Material;
 }
@@ -33,7 +45,7 @@ export const MaterialViewer = ({ material }: MaterialViewerProps) => {
     >
       <article className="document-viewer">
         <div className="document-viewer__meta">
-          <span>{material.kind}</span>
+          <span>{kindLabels[material.kind]}</span>
           {material.timeLabels.map((time) => (
             <span key={time}>{time}</span>
           ))}
@@ -59,7 +71,12 @@ export const MaterialViewer = ({ material }: MaterialViewerProps) => {
                 +
               </button>
             </div>
-            <div className="document-viewer__image-stage">
+            <div
+              className="document-viewer__image-stage"
+              role="region"
+              tabIndex={0}
+              aria-label={`Увеличенное изображение: ${material.imageAlt ?? material.title}`}
+            >
               <img
                 src={material.image}
                 alt={material.imageAlt ?? ''}

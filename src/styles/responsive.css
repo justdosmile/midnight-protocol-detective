@@ -83,7 +83,8 @@
     grid-template-columns: 1fr;
   }
 
-  .fragment-bank {
+  .fragment-bank,
+  .fragment-bank--square {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -129,7 +130,7 @@
 
   .case-timer {
     min-width: auto;
-    font-size: 0.7rem;
+    font-size: 0.76rem;
   }
 
   .terminal-layout {
@@ -299,6 +300,10 @@
   }
 
   .document-grid--wide {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .document-grid--square {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 

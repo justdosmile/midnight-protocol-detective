@@ -44,7 +44,7 @@ export const ChapterWorkspace = () => {
         <section className="quick-guide" aria-labelledby="guide-title">
           <div>
             <p className="eyebrow">Первые шаги</p>
-            <h2 id="guide-title">Как работает терминал</h2>
+            <h2 id="guide-title">Как вести дело</h2>
           </div>
           <ol>
             <li><span>1</span><p><strong>Открывайте материалы</strong> в карточках ниже.</p></li>
@@ -52,7 +52,7 @@ export const ChapterWorkspace = () => {
             <li><span>3</span><p><strong>Записывайте версии</strong> в блокнот справа.</p></li>
             <li><span>4</span><p><strong>Подсказки</strong> всегда доступны и не блокируют финал.</p></li>
           </ol>
-          <p className="quick-guide__goal">Общая цель: объяснить семь минут тишины и поздний голос, затем назвать преступника.</p>
+          <p className="quick-guide__goal">Общая цель: проверить время, звонки, маршруты и следы, а затем назвать преступника.</p>
         </section>
       ) : null}
 
@@ -111,7 +111,7 @@ export const ChapterWorkspace = () => {
 
       {!puzzles.length ? (
         <section className="chapter-transition">
-          <p>{introComplete ? 'Вводные материалы изучены. Можно перейти к восстановлению кадров.' : 'Изучите все материалы главы, чтобы открыть следующий раздел.'}</p>
+          <p>{introComplete ? 'Вводные материалы изучены. Пора восстановить порядок вечера.' : 'Изучите все материалы главы, чтобы открыть следующий раздел.'}</p>
           <button className="button button--primary" disabled={!introComplete} onClick={completeIntro}>
             Перейти к главе 2
           </button>

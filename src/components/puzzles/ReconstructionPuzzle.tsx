@@ -65,13 +65,16 @@ export const ReconstructionPuzzle = ({
     if (isExactSequence(placed.map((item) => item ?? ''), interaction.correctSlotOrder)) {
       onSolved(placed);
     } else {
-      setMessage('Некоторые строки или линии сгиба пока не продолжаются через разрыв.');
+      setMessage('Части пока стоят не по порядку. Сверьте продолжение фраз.');
     }
   };
 
   return (
     <div className="reconstruction-puzzle">
-      <div className="fragment-bank" aria-label="Фрагменты документа">
+      <div
+        className={`fragment-bank ${interaction.slots.length === 9 ? 'fragment-bank--square' : ''}`}
+        aria-label="Части записки"
+      >
         {interaction.fragments.map((fragment) => {
           const inUse = placed.includes(fragment.id);
           return (
@@ -91,8 +94,14 @@ export const ReconstructionPuzzle = ({
         })}
       </div>
       <div
-        className={`document-grid ${interaction.slots.length > 8 ? 'document-grid--wide' : ''}`}
-        aria-label="Поле сборки документа"
+        className={`document-grid ${
+          interaction.slots.length === 9
+            ? 'document-grid--square'
+            : interaction.slots.length > 9
+              ? 'document-grid--wide'
+              : ''
+        }`}
+        aria-label="Поле сборки записки"
       >
         {interaction.slots.map((slot, index) => {
           const fragment = interaction.fragments.find((item) => item.id === placed[index]);
@@ -120,14 +129,14 @@ export const ReconstructionPuzzle = ({
           );
         })}
       </div>
-      <p className="input-help">Выберите фрагмент и ячейку или перетащите его мышью. Нажмите заполненную ячейку, чтобы вернуть фрагмент.</p>
+      <p className="input-help">Выберите часть и место или перетащите её мышью. Нажмите заполненное место, чтобы вернуть часть.</p>
       {message ? <p className="puzzle-message puzzle-message--wrong" role="status">{message}</p> : null}
       <div className="puzzle-actions">
         <button className="button button--primary" onClick={verify}>
-          Проверить сборку
+          Проверить записку
         </button>
         <button className="button" onClick={clearAll} disabled={!placed.some(Boolean)}>
-          Очистить поле
+          Начать заново
         </button>
       </div>
     </div>

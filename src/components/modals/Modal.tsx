@@ -92,7 +92,9 @@ export const Modal = ({
             </button>
           ) : null}
         </header>
-        <div className="modal__body">{children}</div>
+        <div className="modal__body" tabIndex={0} aria-label={`Содержимое: ${title}`}>
+          {children}
+        </div>
         {footer ? <footer className="modal__footer">{footer}</footer> : null}
       </div>
     </div>,

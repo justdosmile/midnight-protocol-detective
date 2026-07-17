@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { PhotoPuzzleInteraction, PuzzleDefinition } from '../../types/game';
 
 interface PhotoPuzzleProps {
@@ -12,6 +12,8 @@ export const PhotoPuzzle = ({ interaction, onSolved }: PhotoPuzzleProps) => {
   const [contrast, setContrast] = useState(1);
   const [exposure, setExposure] = useState(1);
   const [message, setMessage] = useState('');
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const targetRef = useRef<HTMLButtonElement>(null);
   const targetAvailable =
     zoom >= interaction.minimumZoom &&
     contrast >= interaction.minimumContrast &&
@@ -19,11 +21,25 @@ export const PhotoPuzzle = ({ interaction, onSolved }: PhotoPuzzleProps) => {
   const clamp = (value: number, min: number, max: number) =>
     Math.min(max, Math.max(min, Number(value.toFixed(2))));
 
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    const target = targetRef.current;
+    if (!targetAvailable || !viewport || !target) return;
+
+    const centerX = (target.offsetLeft + target.offsetWidth / 2) * zoom;
+    const centerY = (target.offsetTop + target.offsetHeight / 2) * zoom;
+    viewport.scrollTo({
+      left: Math.max(0, centerX - viewport.clientWidth / 2),
+      top: Math.max(0, centerY - viewport.clientHeight / 2),
+      behavior: 'smooth',
+    });
+  }, [targetAvailable, zoom]);
+
   const inspectTarget = () => {
     if (targetAvailable) {
       onSolved({ zoom, contrast, exposure, target: interaction.targetLabel });
     } else {
-      setMessage('Маркировка ещё сливается с поверхностью. Настройте масштаб, контраст и экспозицию.');
+      setMessage('Пол ещё слишком тёмный. Настройте увеличение, контраст и яркость.');
     }
   };
 
@@ -69,9 +85,9 @@ export const PhotoPuzzle = ({ interaction, onSolved }: PhotoPuzzleProps) => {
           </div>
         </div>
         <div className="photo-control">
-          <label htmlFor="photo-exposure">Экспозиция {Math.round(exposure * 100)}%</label>
+          <label htmlFor="photo-exposure">Яркость {Math.round(exposure * 100)}%</label>
           <div className="range-with-buttons">
-            <button type="button" className="icon-button" aria-label="Понизить экспозицию" onClick={() => setExposure((value) => clamp(value - 0.05, 0.7, 1.5))}>−</button>
+            <button type="button" className="icon-button" aria-label="Понизить яркость" onClick={() => setExposure((value) => clamp(value - 0.05, 0.7, 1.5))}>−</button>
           <input
             id="photo-exposure"
             type="range"
@@ -81,11 +97,11 @@ export const PhotoPuzzle = ({ interaction, onSolved }: PhotoPuzzleProps) => {
             value={exposure}
             onChange={(event) => { setExposure(Number(event.target.value)); setMessage(''); }}
           />
-            <button type="button" className="icon-button" aria-label="Повысить экспозицию" onClick={() => { setExposure((value) => clamp(value + 0.05, 0.7, 1.5)); setMessage(''); }}>+</button>
+            <button type="button" className="icon-button" aria-label="Повысить яркость" onClick={() => { setExposure((value) => clamp(value + 0.05, 0.7, 1.5)); setMessage(''); }}>+</button>
           </div>
         </div>
       </div>
-      <div className="inspection-viewport">
+      <div className="inspection-viewport" ref={viewportRef}>
         <div
           className="inspection-image"
           style={{
@@ -95,6 +111,7 @@ export const PhotoPuzzle = ({ interaction, onSolved }: PhotoPuzzleProps) => {
         >
           <img src={interaction.image} alt={interaction.imageAlt} />
           <button
+            ref={targetRef}
             className={`inspection-target ${targetAvailable ? 'inspection-target--visible' : ''}`}
             style={{
               left: `${interaction.target.x}%`,
@@ -103,7 +120,7 @@ export const PhotoPuzzle = ({ interaction, onSolved }: PhotoPuzzleProps) => {
               height: `${interaction.target.height}%`,
             }}
             onClick={inspectTarget}
-            aria-label={targetAvailable ? `Проверить область: ${interaction.targetLabel}` : 'Исследовать область монтажного стола'}
+            aria-label={targetAvailable ? `Проверить область: ${interaction.targetLabel}` : 'Исследовать пол у скамьи'}
           >
             <span>{targetAvailable ? interaction.targetLabel : 'Исследовать'}</span>
           </button>
@@ -112,7 +129,7 @@ export const PhotoPuzzle = ({ interaction, onSolved }: PhotoPuzzleProps) => {
       <p className="input-help">Значимая деталь крупная и доступна с клавиатуры через кнопку на снимке.</p>
       {targetAvailable ? (
         <p className="puzzle-message" role="status">
-          Контуры читаются лучше. Проверьте служебную область на снимке.
+          Пол стал виден лучше. Проверьте область рядом со скамьёй.
         </p>
       ) : null}
       {message ? <p className="puzzle-message puzzle-message--wrong" role="status">{message}</p> : null}

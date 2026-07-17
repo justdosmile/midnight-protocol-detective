@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useAmbience } from './audio/AmbienceProvider';
 import { FinalAccusation } from './components/FinalAccusation';
 import { ChapterWorkspace } from './components/layout/ChapterWorkspace';
 import { RightRail } from './components/layout/RightRail';
@@ -16,7 +15,6 @@ import type { Suspect } from './types/game';
 
 export default function App() {
   const { state, dispatch, content } = useGame();
-  const { activate } = useAmbience();
   const [enteredTerminal, setEnteredTerminal] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [resetOpen, setResetOpen] = useState(false);
@@ -34,15 +32,19 @@ export default function App() {
   useEffect(() => {
     const classNames = ['reduced-motion', 'high-contrast', 'large-text'];
     for (const className of classNames) {
-      document.body.classList.toggle(className, accessibilityClasses.includes(className));
+      const enabled = accessibilityClasses.includes(className);
+      document.documentElement.classList.toggle(className, enabled);
+      document.body.classList.toggle(className, enabled);
     }
-    return () => document.body.classList.remove(...classNames);
+    return () => {
+      document.documentElement.classList.remove(...classNames);
+      document.body.classList.remove(...classNames);
+    };
   }, [accessibilityClasses]);
 
   const enter = () => {
     dispatch({ type: 'START_GAME', now: Date.now() });
     setEnteredTerminal(true);
-    if (state.settings.audio.enabled) void activate();
   };
 
   const reset = () => {
@@ -60,7 +62,7 @@ export default function App() {
         {resetOpen ? (
           <ConfirmModal
             title="Начать новое расследование?"
-            message="Текущие заметки и прогресс будут удалены. Настройки интерфейса сохранятся."
+            message="Текущие заметки и прогресс будут удалены. Настройки экрана и звука сохранятся."
             confirmLabel="Начать заново"
             destructive
             onConfirm={reset}

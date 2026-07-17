@@ -8,7 +8,15 @@ describe('контракт игрового контента', () => {
     expect(caseContent.chapters).toHaveLength(5);
     expect(caseContent.puzzles).toHaveLength(5);
     expect(caseContent.suspects).toHaveLength(5);
-    expect(caseContent.materials.length).toBeGreaterThanOrEqual(18);
+    expect(caseContent.title).toBe('ТРИ КОРОТКИХ ЗВОНКА');
+    expect(caseContent.materials).toHaveLength(38);
+    expect(caseContent.suspects.map((suspect) => suspect.name)).toEqual([
+      'Максим Сапунович',
+      'Лиля Родионовна',
+      'Денис Сапунков',
+      'Ксения Головаченко',
+      'Вера Крылова',
+    ]);
     expect(unique(caseContent.materials.map((material) => material.id))).toBe(true);
     expect(unique(caseContent.puzzles.map((puzzle) => puzzle.id))).toBe(true);
 
@@ -19,6 +27,17 @@ describe('контракт игрового контента', () => {
       expect(chapter.puzzleIds.every((id) => puzzleIds.has(id))).toBe(true);
     }
     expect(caseContent.requiredForFinale.every((id) => materialIds.has(id))).toBe(true);
+  });
+
+  it('использует короткие тексты и только растровые содержательные изображения', () => {
+    for (const material of caseContent.materials) {
+      expect(material.summary.length).toBeLessThan(150);
+      if (material.image) expect(material.image.endsWith('.webp')).toBe(true);
+    }
+    for (const suspect of caseContent.suspects) {
+      expect(suspect.portrait.endsWith('.webp')).toBe(true);
+    }
+    expect(JSON.stringify(caseContent)).not.toContain('.svg');
   });
 
   it('связывает каждую задачу с подсказками и валидной конфигурацией', () => {
@@ -38,8 +57,9 @@ describe('контракт игрового контента', () => {
         expect(puzzle.interaction.correctSlotOrder).toHaveLength(puzzle.interaction.slots.length);
       }
       if (puzzle.interaction.type === 'board') {
+        const requiredIds = puzzle.interaction.requiredGroups.flat();
         expect(
-          puzzle.interaction.requiredGroups.flat().every((id) => materialIds.has(id)),
+          requiredIds.every((id) => materialIds.has(id)),
         ).toBe(true);
         const boardEligibleIds = new Set(
           caseContent.materials
@@ -47,8 +67,10 @@ describe('контракт игрового контента', () => {
             .map((material) => material.id),
         );
         expect(
-          puzzle.interaction.requiredGroups.flat().every((id) => boardEligibleIds.has(id)),
+          requiredIds.every((id) => boardEligibleIds.has(id)),
         ).toBe(true);
+        expect(new Set(requiredIds).size).toBe(requiredIds.length);
+        expect(puzzle.interaction.minimumEvidence).toBe(requiredIds.length);
       }
     }
   });

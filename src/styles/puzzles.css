@@ -4,15 +4,15 @@
   margin-top: 28px;
   border: 1px solid var(--line-strong);
   background:
-    linear-gradient(135deg, rgb(212 138 44 / 7%), transparent 35%),
-    rgb(6 20 27 / 90%);
+    linear-gradient(135deg, rgb(173 81 56 / 11%), transparent 35%),
+    rgb(20 15 13 / 92%);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
 }
 
 .puzzle-panel--solved {
   border-color: rgb(109 181 154 / 28%);
-  background: linear-gradient(135deg, rgb(109 181 154 / 10%), rgb(6 20 27 / 90%));
+  background: linear-gradient(135deg, rgb(109 181 154 / 10%), rgb(20 15 13 / 92%));
 }
 
 .puzzle-panel__header {
@@ -64,7 +64,7 @@
 
 .locked-panel p {
   margin: 0;
-  font-size: 0.8rem;
+  font-size: 0.88rem;
 }
 
 .sequence-list {
@@ -80,7 +80,7 @@
   padding: 10px;
   align-items: center;
   border: 1px solid var(--line);
-  background: rgb(13 38 48 / 62%);
+  background: rgb(45 31 27 / 70%);
   border-radius: var(--radius-sm);
   grid-template-columns: 30px 84px minmax(0, 1fr) auto;
   gap: 10px;
@@ -93,7 +93,7 @@
 .sequence-card__index {
   color: var(--amber-400);
   font-family: var(--font-mono);
-  font-size: 0.76rem;
+  font-size: 0.82rem;
 }
 
 .sequence-card img {
@@ -104,13 +104,13 @@
 }
 
 .sequence-card strong {
-  font-size: 0.85rem;
+  font-size: 0.94rem;
 }
 
 .sequence-card p {
   margin: 3px 0 0;
   color: var(--mist-500);
-  font-size: 0.67rem;
+  font-size: 0.8rem;
 }
 
 .sequence-card__controls {
@@ -167,7 +167,7 @@
   margin: 0;
   color: var(--mist-300);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.82rem;
 }
 
 .signal-puzzle .field {
@@ -178,6 +178,10 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 8px;
+}
+
+.fragment-bank--square {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .paper-fragment {
@@ -207,12 +211,12 @@
   margin-bottom: 9px;
   color: #1a2221;
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: 0.72rem;
 }
 
 .paper-fragment span {
   font-family: Georgia, serif;
-  font-size: 0.72rem;
+  font-size: 0.82rem;
   line-height: 1.4;
 }
 
@@ -232,6 +236,11 @@
 .document-grid--wide {
   width: min(100%, 860px);
   grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.document-grid--square {
+  width: min(100%, 760px);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .document-slot {
@@ -256,7 +265,7 @@
 .document-slot strong {
   margin-bottom: 10px;
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.72rem;
 }
 
 .photo-controls {
@@ -274,7 +283,7 @@
 .photo-control > label {
   color: var(--mist-300);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.8rem;
 }
 
 .range-with-buttons {
@@ -297,12 +306,14 @@
   display: grid;
   gap: 5px;
   color: var(--mist-300);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
 }
 
 .inspection-viewport {
   height: min(52vh, 480px);
   overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
   border: 1px solid var(--line-strong);
   background: var(--ink-950);
   border-radius: var(--radius-md);
@@ -312,7 +323,7 @@
   position: relative;
   width: 100%;
   min-width: 560px;
-  transform-origin: center;
+  transform-origin: top left;
   transition: filter 180ms ease, transform 180ms ease;
 }
 
@@ -328,7 +339,7 @@
   color: transparent;
   border: 1px dashed transparent;
   background: transparent;
-  font-size: 0.56rem;
+  font-size: 0.72rem;
 }
 
 .inspection-target--visible,
@@ -346,7 +357,7 @@
   border: 1px solid rgb(109 181 154 / 25%);
   background: rgb(109 181 154 / 8%);
   border-radius: var(--radius-sm);
-  font-size: 0.75rem;
+  font-size: 0.84rem;
 }
 
 .puzzle-message--wrong {
@@ -364,7 +375,7 @@
 
 .evidence-board {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(240px, 32%);
+  grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr);
   gap: 14px;
 }
 
@@ -387,16 +398,13 @@
   align-items: center;
   color: var(--mist-500);
   gap: 7px;
-  font-size: 0.68rem;
+  font-size: 0.78rem;
 }
 
 .filter-check input { width: 17px; min-height: 17px; }
 
 .evidence-card-grid {
   display: grid;
-  max-height: 480px;
-  padding-right: 3px;
-  overflow-y: auto;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
 }
@@ -407,26 +415,26 @@
   padding: 11px;
   flex-direction: column;
   border: 1px solid var(--line);
-  background: rgb(12 36 45 / 66%);
+  background: rgb(42 29 25 / 72%);
   border-radius: var(--radius-sm);
 }
 
 .evidence-card > div:first-child > span {
   color: var(--amber-400);
   font-family: var(--font-mono);
-  font-size: 0.52rem;
+  font-size: 0.74rem;
   text-transform: uppercase;
 }
 
 .evidence-card h4 {
   margin: 6px 0;
-  font-size: 0.88rem;
+  font-size: 0.96rem;
 }
 
 .evidence-card p {
   margin: 0;
   color: var(--mist-500);
-  font-size: 0.65rem;
+  font-size: 0.78rem;
 }
 
 .evidence-card__actions {
@@ -447,7 +455,7 @@
 }
 
 .theory-zone h3 { margin-bottom: 5px; }
-.theory-zone header > p:last-child { color: var(--mist-500); font-size: 0.65rem; }
+.theory-zone header > p:last-child { color: var(--mist-500); font-size: 0.78rem; }
 .theory-zone ul { display: grid; padding: 0; gap: 6px; list-style: none; }
 
 .theory-zone li {
@@ -462,19 +470,21 @@
 }
 
 .theory-zone li > button:first-child {
+  min-width: 0;
   padding: 0;
   color: var(--paper);
   border: 0;
   background: transparent;
   font-family: Georgia, serif;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
+  overflow-wrap: anywhere;
   text-align: left;
 }
 
 .theory-chain-grid {
   display: grid;
   margin-top: 12px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 7px;
 }
 
@@ -492,9 +502,10 @@
   align-items: center;
   justify-content: space-between;
   gap: 6px;
+  flex-wrap: wrap;
   color: var(--amber-300);
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: 0.72rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -514,7 +525,7 @@
 .theory-chain > p {
   margin: 0;
   color: var(--mist-500);
-  font-size: 0.58rem;
+  font-size: 0.72rem;
 }
 
 .theory-chain--other {
@@ -524,7 +535,7 @@
 .theory-zone__empty,
 .empty-state {
   color: var(--mist-500);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
 }
 
 .evidence-board + .puzzle-message,
@@ -624,7 +635,7 @@
   border-radius: var(--radius-sm);
 }
 
-.epilogue-grid p { margin: 5px 0 0; color: var(--mist-500); font-size: 0.7rem; }
+.epilogue-grid p { margin: 5px 0 0; color: var(--mist-500); font-size: 0.82rem; }
 
 .final-stats {
   display: grid;
@@ -636,5 +647,5 @@
 
 .final-stats div { padding: 0 14px; border-left: 1px solid var(--line); }
 .final-stats div:first-child { padding-left: 0; border-left: 0; }
-.final-stats dt { color: var(--mist-500); font-size: 0.6rem; text-transform: uppercase; }
+.final-stats dt { color: var(--mist-500); font-size: 0.72rem; text-transform: uppercase; }
 .final-stats dd { margin-top: 4px; color: var(--amber-400); font-family: var(--font-mono); }

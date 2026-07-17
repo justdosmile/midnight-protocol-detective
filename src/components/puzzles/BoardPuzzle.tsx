@@ -22,7 +22,7 @@ export const BoardPuzzle = ({ interaction, onSolved }: BoardPuzzleProps) => {
       onSolved(state.theoryEvidenceIds);
     } else {
       setMessage(
-        'Версия пока не соединяет независимые сведения о времени, маршруте и происхождении записи.',
+        'В версии не хватает одной из пяти цепочек. Проверьте пустые блоки справа.',
       );
     }
   };
@@ -32,7 +32,7 @@ export const BoardPuzzle = ({ interaction, onSolved }: BoardPuzzleProps) => {
       <EvidenceBoard
         compact
         theoryGroups={interaction.requiredGroups.map((ids, index) => ({
-          label: ['Время', 'Источник голоса', 'Пульт', 'Второй человек', 'Физические следы', 'Возможность', 'Мотив'][index] ?? `Цепочка ${index + 1}`,
+          label: ['Время', 'Звонки', 'Маршрут', 'Физические следы', 'Мотив'][index] ?? `Цепочка ${index + 1}`,
           ids,
         }))}
       />

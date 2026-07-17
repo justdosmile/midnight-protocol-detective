@@ -34,14 +34,14 @@ export const SettingsPanel = ({ onClose, onRequestReset }: SettingsPanelProps) =
   };
 
   return (
-    <Modal title="Настройки терминала" eyebrow="Интерфейс" onClose={onClose}>
+    <Modal title="Настройки игры" eyebrow="Дело" onClose={onClose}>
       <div className="settings-list">
         <section>
           <h3>Звук</h3>
           <div className="setting-row">
             <div>
-              <strong>Атмосфера станции</strong>
-              <p>Негромкий гул, эфир и интерфейсные сигналы.</p>
+              <strong>Музыка дома</strong>
+              <p>Тихая тревожная музыка, дождь и короткие сигналы.</p>
             </div>
             <button
               className={`toggle ${settings.audio.enabled && isActive ? 'toggle--on' : ''}`}

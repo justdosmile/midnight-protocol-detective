@@ -50,8 +50,8 @@ export const TopBar = ({ onOpenSettings }: TopBarProps) => {
         </time>
         <button
           className="icon-button"
-          aria-label={isActive ? 'Выключить звук' : 'Включить звук'}
-          title={isActive ? 'Выключить звук' : 'Включить звук'}
+          aria-label={isActive ? 'Выключить музыку' : 'Включить музыку'}
+          title={isActive ? 'Выключить музыку' : 'Включить музыку'}
           onClick={() => (isActive ? disable() : void activate())}
         >
           <span aria-hidden="true">{isActive ? '◕' : '○'}</span>

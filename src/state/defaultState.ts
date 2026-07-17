@@ -1,7 +1,7 @@
 import { caseContent as gameContent } from '../data/caseContent';
 import type { GameContent, GameSettings, GameState, PuzzleId, PuzzleProgress } from '../types/game';
 
-export const CURRENT_SAVE_VERSION = 3;
+export const CURRENT_SAVE_VERSION = 4;
 
 export const DEFAULT_SETTINGS: GameSettings = {
   audio: {

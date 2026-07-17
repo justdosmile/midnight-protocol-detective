@@ -12,13 +12,16 @@ const emptyFilters: EvidenceFilters = {
 };
 
 const locationNames: Record<string, string> = {
-  station: 'Станция целиком',
-  lobby: 'Центральный холл',
-  studio: 'Студия',
-  'control-room': 'Аппаратная',
-  archive: 'Архив',
-  corridor: 'Коридор',
-  security: 'Пост охраны',
+  house: 'Дом',
+  foyer: 'Прихожая',
+  'living-room': 'Гостиная',
+  library: 'Библиотека',
+  kitchen: 'Кухня',
+  attic: 'Чердак',
+  'winter-garden': 'Зимний сад',
+  'guest-wing': 'Гостевой флигель',
+  woodshed: 'Дровник',
+  path: 'Старый мосток',
 };
 
 interface EvidenceBoardProps {
