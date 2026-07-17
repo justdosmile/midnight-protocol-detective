@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Матвей Корин, потерпевший</title>
+  <desc id="desc">Стилизованный портрет расследователя и подкастера Матвея Корина у студийного микрофона.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#102d37"/><stop offset="1" stop-color="#050a10"/></linearGradient>
+    <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e6c6a8"/><stop offset="1" stop-color="#8c604e"/></linearGradient>
+    <linearGradient id="coat" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#334958"/><stop offset="1" stop-color="#111b25"/></linearGradient>
+    <radialGradient id="halo"><stop stop-color="#6ee7f2" stop-opacity=".28"/><stop offset="1" stop-color="#6ee7f2" stop-opacity="0"/></radialGradient>
+    <filter id="grain"><feTurbulence baseFrequency=".65" numOctaves="3" seed="4"/><feColorMatrix values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 .06 0"/></filter>
+    <clipPath id="portrait"><rect x="42" y="42" width="716" height="780" rx="28"/></clipPath>
+  </defs>
+  <rect width="800" height="1000" rx="34" fill="#071017"/>
+  <rect x="22" y="22" width="756" height="956" rx="28" fill="none" stroke="#6ee7f2" stroke-opacity=".38" stroke-width="2"/>
+  <g clip-path="url(#portrait)">
+    <rect x="42" y="42" width="716" height="780" fill="url(#bg)"/>
+    <circle cx="413" cy="316" r="310" fill="url(#halo)"/>
+    <path d="M42 666 234 508l177 122 169-188 178 126v254H42Z" fill="#0c1820" opacity=".9"/>
+    <g stroke="#6ee7f2" stroke-opacity=".13"><path d="M42 156h716M42 208h716M42 260h716M42 312h716M42 364h716M42 416h716M42 468h716"/><path d="M132 42v780M222 42v780M312 42v780M402 42v780M492 42v780M582 42v780M672 42v780"/></g>
+    <path d="M178 838c13-192 89-277 225-284 151-8 233 90 245 284Z" fill="url(#coat)"/>
+    <path d="m323 582 74 91 81-96 27 68-105 142-107-139Z" fill="#d7d0bb"/>
+    <path d="m384 648 34 1 20 141-36 45-37-47Z" fill="#a8673b"/>
+    <path d="M290 305c0-139 63-208 156-208 96 0 160 78 150 222l-19 143c-13 91-74 154-151 154-79 0-139-69-150-162Z" fill="url(#skin)"/>
+    <path d="M282 314c-31-155 31-247 166-247 92 0 159 64 157 174-39-13-72-52-91-91-67 48-140 56-232 52Z" fill="#17252e"/>
+    <path d="M286 248c-20 22-26 72-14 125l28-16 13-120ZM580 244c30 31 23 95 7 143l-23-21-5-128Z" fill="#17252e"/>
+    <path d="M351 361c25-13 52-12 74 2M471 362c24-14 51-12 73 4" stroke="#283038" stroke-width="10" stroke-linecap="round"/>
+    <ellipse cx="391" cy="383" rx="8" ry="10" fill="#081017"/><ellipse cx="510" cy="384" rx="8" ry="10" fill="#081017"/>
+    <path d="M451 391c-6 35-10 51-19 68 12 8 25 10 39 3" stroke="#704c42" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <path d="M347 480c19 91 170 104 210-4-41 17-74 22-105 16-35 8-69 3-105-12Z" fill="#34424a"/>
+    <path d="M383 493c43 27 91 27 133-2" stroke="#d39a83" stroke-width="6" fill="none"/>
+    <path d="M324 326c-29-1-44 27-42 66M577 326c28 2 41 30 37 69" stroke="#f4b35d" stroke-width="12" fill="none"/>
+    <path d="M282 394c-26 0-43-15-43-38v-72c0-29 17-43 44-43M614 397c28 0 45-15 45-40v-73c0-28-18-43-47-43" stroke="#1d2d37" stroke-width="24" fill="none"/>
+    <g transform="translate(82 511)"><rect x="0" y="97" width="112" height="190" rx="52" fill="#071017" stroke="#f4b35d" stroke-width="8"/><rect x="22" y="121" width="68" height="98" rx="31" fill="#283b43"/><path d="M56 287v58M2 345h108M-22 207h158" stroke="#f4b35d" stroke-width="8" stroke-linecap="round"/></g>
+    <rect x="42" y="42" width="716" height="780" filter="url(#grain)"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif"><text x="64" y="875" fill="#f4b35d" font-size="22" letter-spacing="4">ПОТЕРПЕВШИЙ // ДОСЬЕ 00</text><text x="64" y="925" fill="#eef7f6" font-size="39" font-weight="700">МАТВЕЙ КОРИН</text><text x="64" y="959" fill="#9bb5ba" font-size="20">расследователь • автор подкаста • 36 лет</text></g>
+  <path d="M690 861h45v45M735 929v26h-76" fill="none" stroke="#6ee7f2" stroke-width="3"/>
+</svg>

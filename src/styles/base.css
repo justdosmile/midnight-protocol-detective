@@ -1,0 +1,347 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  min-height: 100%;
+  background: var(--ink-950);
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  color: var(--mist-100);
+  background:
+    radial-gradient(circle at 72% 12%, rgb(56 118 131 / 11%), transparent 31rem),
+    linear-gradient(135deg, var(--ink-950), var(--ink-900));
+}
+
+body::before {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  opacity: 0.12;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.23'/%3E%3C/svg%3E");
+}
+
+button,
+input,
+textarea,
+select {
+  color: inherit;
+  font: inherit;
+}
+
+button,
+select {
+  cursor: pointer;
+}
+
+button:disabled,
+input:disabled,
+select:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+button,
+a,
+input,
+textarea,
+select,
+[tabindex] {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--amber-400);
+  outline-offset: 3px;
+}
+
+::selection {
+  color: var(--ink-950);
+  background: var(--amber-400);
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+blockquote,
+figure,
+dl,
+dd {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: #f1f4f0;
+  font-family: var(--font-display);
+  font-weight: 650;
+  letter-spacing: 0.02em;
+}
+
+p {
+  line-height: 1.55;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 1000;
+  top: 8px;
+  left: 8px;
+  padding: 10px 14px;
+  color: var(--ink-950);
+  background: var(--amber-400);
+  border-radius: var(--radius-sm);
+  transform: translateY(-160%);
+  transition: transform 160ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.eyebrow {
+  margin-bottom: 0.45rem;
+  color: var(--amber-400);
+  font-family: var(--font-mono);
+  font-size: 0.69rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.muted,
+.input-help {
+  color: var(--mist-500);
+  font-size: 0.82rem;
+}
+
+.button {
+  min-height: 42px;
+  padding: 0.68rem 1rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  font-weight: 650;
+  letter-spacing: 0.015em;
+  transition: border-color 150ms ease, background 150ms ease, color 150ms ease, transform 150ms ease;
+}
+
+.button:not(:disabled):active {
+  transform: translateY(1px);
+}
+
+.button--primary {
+  color: #171006;
+  background: linear-gradient(135deg, var(--amber-400), var(--amber-500));
+  box-shadow: 0 8px 24px rgb(212 138 44 / 18%);
+}
+
+.button--primary:not(:disabled):hover {
+  background: #ffc166;
+}
+
+.button--quiet,
+.button--sound {
+  color: var(--mist-100);
+  border-color: var(--line-strong);
+  background: rgb(19 44 55 / 56%);
+}
+
+.button--quiet:not(:disabled):hover,
+.button--sound:not(:disabled):hover {
+  border-color: var(--cyan-500);
+  background: rgb(32 66 77 / 68%);
+}
+
+.button--active {
+  color: var(--amber-400);
+  border-color: rgb(241 173 77 / 42%);
+  background: var(--amber-glow);
+}
+
+.button--danger {
+  color: #ffd8d4;
+  border-color: rgb(217 109 104 / 42%);
+  background: rgb(105 38 38 / 35%);
+}
+
+.button--danger:hover {
+  background: rgb(132 46 46 / 48%);
+}
+
+.button--full {
+  width: 100%;
+}
+
+.text-button {
+  padding: 0;
+  color: var(--amber-400);
+  border: 0;
+  background: transparent;
+  font-size: 0.79rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+.text-button:hover {
+  color: #ffd18a;
+}
+
+.icon-button {
+  display: inline-grid;
+  flex: 0 0 auto;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  place-items: center;
+  color: var(--mist-300);
+  border: 1px solid var(--line);
+  background: rgb(14 35 44 / 70%);
+  border-radius: var(--radius-sm);
+}
+
+.icon-button:not(:disabled):hover {
+  color: #fff;
+  border-color: var(--line-strong);
+  background: var(--ink-700);
+}
+
+.field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.field > span,
+.range-setting > span {
+  color: var(--mist-300);
+  font-size: 0.78rem;
+  font-weight: 650;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  border: 1px solid var(--line-strong);
+  background: rgb(3 13 18 / 72%);
+  border-radius: var(--radius-sm);
+}
+
+input,
+select {
+  min-height: 40px;
+  padding: 0 0.72rem;
+}
+
+textarea {
+  min-height: 86px;
+  padding: 0.72rem;
+  resize: vertical;
+}
+
+input:hover,
+textarea:hover,
+select:hover {
+  border-color: var(--mist-500);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--amber-400);
+  box-shadow: 0 0 0 3px var(--amber-glow);
+}
+
+input[type="range"] {
+  min-height: 28px;
+  padding: 0;
+  accent-color: var(--amber-400);
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  min-height: 20px;
+  accent-color: var(--amber-400);
+}
+
+.fatal-screen {
+  display: grid;
+  min-height: 100vh;
+  padding: 2rem;
+  place-items: center;
+}
+
+.fatal-screen__panel {
+  width: min(600px, 100%);
+  padding: clamp(1.5rem, 5vw, 3.5rem);
+  border: 1px solid var(--line-strong);
+  background: var(--glass);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.fatal-screen__panel h1 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+}
+
+.large-text {
+  font-size: 18px;
+}
+
+.high-contrast {
+  --mist-500: #adc5ca;
+  --mist-300: #d9e6e7;
+  --line: rgb(217 237 240 / 34%);
+  --line-strong: rgb(234 247 248 / 58%);
+}
+
+.reduced-motion *,
+.reduced-motion *::before,
+.reduced-motion *::after {
+  scroll-behavior: auto !important;
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

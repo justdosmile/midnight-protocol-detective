@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1050" role="img" aria-labelledby="title desc">
+  <title id="title">План радиостанции «Север-7»</title>
+  <desc id="desc">Подробный план помещений радиостанции с комнатами, дверями, камерами, считывателями пропусков и масштабом.</desc>
+  <defs>
+    <pattern id="grid" width="25" height="25" patternUnits="userSpaceOnUse"><path d="M25 0H0V25" fill="none" stroke="#6ee7f2" stroke-opacity=".075"/></pattern>
+    <pattern id="hatch" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0v14" stroke="#f4b35d" stroke-opacity=".22" stroke-width="5"/></pattern>
+    <filter id="paper"><feTurbulence baseFrequency=".28" numOctaves="3" seed="23"/><feColorMatrix values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 .045 0"/></filter>
+    <g id="door"><path d="M0 0v70a70 70 0 0 0 70-70" fill="none" stroke="#f4b35d" stroke-width="6"/><path d="M0 0h70" stroke="#f4b35d" stroke-opacity=".25" stroke-width="3"/></g>
+    <g id="reader"><rect width="20" height="34" rx="4" fill="#071017" stroke="#ff6378" stroke-width="3"/><circle cx="10" cy="10" r="4" fill="#ff6378"/><path d="M5 23h10" stroke="#d8fbff" stroke-width="2"/></g>
+    <g id="cam"><path d="M0 0h40l12 12-12 12H0Z" fill="#102a34" stroke="#6ee7f2" stroke-width="4"/><circle cx="35" cy="12" r="6" fill="#6ee7f2"/><path d="m5 24-10 18" stroke="#6ee7f2" stroke-width="4"/></g>
+  </defs>
+  <rect width="1600" height="1050" rx="28" fill="#071017"/>
+  <rect x="24" y="24" width="1552" height="1002" rx="20" fill="url(#grid)" stroke="#6ee7f2" stroke-opacity=".32" stroke-width="2"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="72" y="86" fill="#eef7f6" font-size="36" font-weight="700" letter-spacing="5">РАДИОСТАНЦИЯ «СЕВЕР-7»</text>
+    <text x="72" y="122" fill="#8da9ad" font-size="20" letter-spacing="3">ПЛАН ЭТАЖА // СХЕМА ДОСТУПА И НАБЛЮДЕНИЯ</text>
+    <text x="1320" y="82" fill="#f4b35d" font-size="18" text-anchor="end">ОБЪЕКТ 07-A</text><text x="1520" y="82" fill="#8da9ad" font-size="18" text-anchor="end">МАСШТАБ 1:160</text>
+  </g>
+  <g transform="translate(80 170)">
+    <path d="M0 0H1090V115H1430V810H1080V855H0Z" fill="#0c1920" stroke="#d4e6e7" stroke-width="8"/>
+    <path d="M0 115h1090M0 535h1430M245 115v420M560 115v420M830 115v420M1090 0v535M1245 115v420M340 535v320M715 535v320M1080 535v320" fill="none" stroke="#9bb7bb" stroke-width="7"/>
+    <path d="M245 115V36H0v79M830 115V0M1245 115V45h185v70M340 535v76M715 535v76M1080 535v73" fill="none" stroke="#071017" stroke-width="15"/>
+    <use href="#door" x="245" y="40" transform="rotate(90 245 40)"/><use href="#door" x="830" y="0"/><use href="#door" x="1245" y="45" transform="rotate(90 1245 45)"/>
+    <use href="#door" x="340" y="610" transform="rotate(180 340 610)"/><use href="#door" x="715" y="610" transform="rotate(180 715 610)"/><use href="#door" x="1080" y="608" transform="rotate(180 1080 608)"/>
+    <path d="M0 535h83M155 535h90M245 535h95M410 535h150M560 535h82M714 535h116M830 535h73M975 535h115M1090 535h70M1232 535h198" stroke="#071017" stroke-width="15"/>
+    <use href="#door" x="83" y="535" transform="rotate(-90 83 535)"/><use href="#door" x="340" y="535" transform="rotate(-90 340 535)"/><use href="#door" x="642" y="535" transform="rotate(-90 642 535)"/><use href="#door" x="903" y="535" transform="rotate(-90 903 535)"/><use href="#door" x="1160" y="535" transform="rotate(-90 1160 535)"/>
+    <g fill="url(#hatch)" stroke="#f4b35d" stroke-width="3" stroke-opacity=".8"><rect x="18" y="555" width="304" height="282" rx="7"/><rect x="1098" y="555" width="314" height="237" rx="7"/></g>
+    <g font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+      <g fill="#eaf4f3"><text x="122" y="245" font-size="25" font-weight="700">ВЕСТИБЮЛЬ</text><text x="122" y="277" fill="#87a5aa" font-size="17">главный вход</text></g>
+      <g fill="#eaf4f3"><text x="402" y="258" font-size="25" font-weight="700">ГАЛЕРЕЯ</text><text x="402" y="290" fill="#87a5aa" font-size="17">инсталляция «Эхо»</text></g>
+      <g fill="#eaf4f3"><text x="695" y="258" font-size="25" font-weight="700">СТУДИЯ ЭФИРА</text><text x="695" y="290" fill="#87a5aa" font-size="17">микрофоны • пульт B</text></g>
+      <g fill="#eaf4f3"><text x="960" y="258" font-size="25" font-weight="700">АППАРАТНАЯ</text><text x="960" y="290" fill="#87a5aa" font-size="17">автоматика • пульт A</text></g>
+      <g fill="#eaf4f3"><text x="1168" y="248" font-size="23" font-weight="700">ПОСТ ОХРАНЫ</text><text x="1168" y="280" fill="#87a5aa" font-size="17">видеосервер</text></g>
+      <g fill="#eaf4f3"><text x="1338" y="250" font-size="23" font-weight="700">СЕРВЕРНАЯ</text><text x="1338" y="282" fill="#87a5aa" font-size="17">щит связи</text></g>
+      <g fill="#f6d79f"><text x="170" y="685" font-size="26" font-weight="700">АРХИВ</text><text x="170" y="717" fill="#bda171" font-size="17">стеллажи • сейф</text></g>
+      <g fill="#eaf4f3"><text x="527" y="683" font-size="25" font-weight="700">МОНТАЖНАЯ</text><text x="527" y="715" fill="#87a5aa" font-size="17">кассеты • стол</text></g>
+      <g fill="#eaf4f3"><text x="897" y="682" font-size="25" font-weight="700">ТЕХНИЧЕСКАЯ</text><text x="897" y="714" fill="#87a5aa" font-size="17">реле • кабельный ввод</text></g>
+      <g fill="#f6d79f"><text x="1255" y="674" font-size="25" font-weight="700">ГЕНЕРАТОРНАЯ</text><text x="1255" y="706" fill="#bda171" font-size="17">аварийное питание</text></g>
+      <text x="715" y="491" fill="#6ee7f2" font-size="20" letter-spacing="7">СЕВЕРНЫЙ КОРИДОР</text>
+    </g>
+    <g opacity=".9">
+      <use href="#reader" x="93" y="493"/><use href="#reader" x="350" y="493"/><use href="#reader" x="652" y="493"/><use href="#reader" x="913" y="493"/><use href="#reader" x="1170" y="493"/><use href="#reader" x="855" y="14"/>
+      <use href="#cam" x="209" y="139"/><use href="#cam" x="526" y="503" transform="rotate(180 526 503)"/><use href="#cam" x="1048" y="139"/><use href="#cam" x="1382" y="503" transform="rotate(180 1382 503)"/>
+      <g fill="#6ee7f2" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700"><text x="195" y="131">КАМ 01</text><text x="458" y="505">КАМ 02</text><text x="1034" y="131">КАМ 03</text><text x="1310" y="505">КАМ 04</text></g>
+    </g>
+    <g stroke="#6ee7f2" stroke-opacity=".46" fill="none" stroke-dasharray="8 9"><path d="M229 160 95 346l254 5Z"/><path d="m511 479-158-89 276 5Z"/><path d="m1068 160-157 161 257 22Z"/><path d="m1362 479-187-88 246-25Z"/></g>
+    <g stroke="#8da9ad" stroke-width="5" fill="none"><path d="M52 388h142M123 320v136M275 345h252M870 354h184M1140 335h212"/></g>
+    <g fill="#172a31" stroke="#76949a" stroke-width="4"><rect x="292" y="195" width="84" height="157"/><rect x="409" y="195" width="84" height="157"/><circle cx="650" cy="339" r="46"/><circle cx="751" cy="339" r="46"/><rect x="871" y="192" width="166" height="86" rx="10"/><rect x="1128" y="187" width="80" height="82"/><rect x="1289" y="184" width="96" height="197"/><rect x="385" y="646" width="281" height="82"/><rect x="765" y="644" width="262" height="94"/></g>
+  </g>
+  <g transform="translate(80 970)" font-family="Arial, Helvetica, sans-serif"><use href="#cam" x="0" y="-21"/><text x="63" y="0" fill="#a9c2c6" font-size="18">камера</text><use href="#reader" x="178" y="-29"/><text x="210" y="0" fill="#a9c2c6" font-size="18">считыватель</text><rect x="376" y="-23" width="36" height="28" fill="url(#hatch)" stroke="#f4b35d"/><text x="427" y="0" fill="#a9c2c6" font-size="18">ограниченный доступ</text><path d="M745 0h160" stroke="#eef7f6" stroke-width="5"/><path d="M745-10v20M825-10v20M905-10v20" stroke="#eef7f6" stroke-width="4"/><text x="825" y="34" fill="#a9c2c6" font-size="17" text-anchor="middle">10 метров</text><text x="1440" y="0" fill="#f4b35d" font-size="18" text-anchor="end">СЕВЕР ↑</text></g>
+  <rect x="24" y="24" width="1552" height="1002" rx="20" filter="url(#paper)" pointer-events="none"/>
+</svg>

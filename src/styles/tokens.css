@@ -1,0 +1,36 @@
+:root {
+  color-scheme: dark;
+  --ink-950: #03090d;
+  --ink-900: #071218;
+  --ink-850: #0a1820;
+  --ink-800: #0d202a;
+  --ink-700: #18333f;
+  --ink-600: #284957;
+  --mist-500: #6f8c96;
+  --mist-300: #a9bec4;
+  --mist-100: #e1ebec;
+  --paper: #dfe2d6;
+  --amber-600: #a8641b;
+  --amber-500: #d48a2c;
+  --amber-400: #f1ad4d;
+  --amber-glow: rgb(232 156 55 / 22%);
+  --cyan-500: #4fa6b7;
+  --cyan-glow: rgb(79 166 183 / 18%);
+  --danger: #d96d68;
+  --success: #6db59a;
+  --line: rgb(171 202 210 / 15%);
+  --line-strong: rgb(171 202 210 / 28%);
+  --glass: rgb(8 23 30 / 78%);
+  --shadow-lg: 0 28px 70px rgb(0 0 0 / 45%);
+  --shadow-sm: 0 10px 32px rgb(0 0 0 / 24%);
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --font-display: "Arial Narrow", "Roboto Condensed", "Segoe UI", sans-serif;
+  --font-body: Inter, "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
